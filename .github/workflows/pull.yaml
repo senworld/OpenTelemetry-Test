@@ -1,0 +1,14 @@
+name: Pull Request Workflow
+
+on:
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - name: Print Hello WOrld
+              run: echo "Hello World"
