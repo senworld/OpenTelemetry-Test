@@ -22,4 +22,5 @@ jobs:
               run: ./gradlew build
             - name: Run the application
               run: ./gradlew bootRun
-              
+            - name: Upload the build artifact
+              run: echo "Uploading the build artifact"
