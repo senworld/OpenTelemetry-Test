@@ -17,6 +17,11 @@ jobs:
               with:
                 java-version: '21'
                 distribution: 'temurin'
+            - name: Update Version in build.gradle
+              run: |
+                VERSION="0.1.0-$(date +%Y%m%d%H%M%S)"
+                echo "Updating version to $VERSION"
+                sed -i "s/version = \".*\"/version = \"$VERSION\"/" ./src/ad/build.gradle
             - name: Setting execution permissions
               run: chmod +x ./gradlew
               working-directory: ./src/ad/
