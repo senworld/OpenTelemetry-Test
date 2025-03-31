@@ -15,15 +15,13 @@ jobs:
             - uses: actions/checkout@v3
             - name: Print Hello WOrld
               run: echo "Hello World"
-            - name: CD into the directory
-              run: cd ./src/ad
             - name: Install dependencies gradle
-              run: ./gradlew dependencies
+              run: ./src/ad/gradlew dependencies
             - name: Run tests
-              run: ./gradlew test
+              run: ./src/ad/gradlew test
             - name: Build the project
-              run: ./gradlew build
+              run: ./src/ad/gradlew build
             - name: Run the application
-              run: ./gradlew bootRun
+              run: ./src/ad/gradlew bootRun
             - name: Upload the build artifact
               run: echo "Uploading the build artifact"
