@@ -23,6 +23,7 @@ jobs:
               run: ./src/ad/gradlew test
             - name: Build the project
               run: ./src/ad/gradlew build
+              working-directory: ./src/ad
             - name: Run the application
               run: ./src/ad/gradlew bootRun
             - name: Upload the build artifact
