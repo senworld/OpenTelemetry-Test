@@ -1,7 +1,7 @@
 FROM alpine AS build
 WORKDIR /src/cart
 COPY ["*", "/src/cart/"]
-RUN apk add bash curl libstdc++ libicu libgcc 
+RUN apk add bash curl libstdc++ icu libgcc 
 RUN curl -L https://dot.net/v1/dotnet-install.sh -o dotnet-install.sh
 RUN chmod +x ./dotnet-install.sh
 RUN ./dotnet-install.sh --version latest
