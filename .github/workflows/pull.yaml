@@ -22,9 +22,10 @@ jobs:
             - name: Run tests
               run: ./src/ad/gradlew test
             - name: Build the project
-              run: ./src/ad/gradlew build
+              run: ./gradlew build
               working-directory: ./src/ad
             - name: Run the application
-              run: ./src/ad/gradlew bootRun
+              run: ./gradlew bootRun
+              working-directory: ./src/ad
             - name: Upload the build artifact
               run: echo "Uploading the build artifact"
