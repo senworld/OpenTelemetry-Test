@@ -25,4 +25,5 @@ jobs:
                 cd ./src
                 for dir in */; do
                   echo "Building and pushing $dir"
+                  docker build -t 533267032079.dkr.ecr.ap-south-1.amazonaws.com/sen/opentelemetry/$dir:${{ github.run_id }} $dir
                 done
