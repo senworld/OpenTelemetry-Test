@@ -5,6 +5,7 @@ plugins {
     id 'idea'
     id 'application'
     id 'com.github.ben-manes.versions' version '0.51.0'
+    id 'maven-publish' 
 }
 
 repositories {
@@ -139,4 +140,21 @@ task ad(type: CreateStartScripts) {
 applicationDistribution.into('bin') {
     from(ad)
     fileMode = 0755
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url = uri("https://testdomain-533267032079.d.codeartifact.ap-south-1.amazonaws.com/maven/ad-service/")
+            credentials {
+                username = "aws"
+                password = project.findProperty("awsCodeArtifactToken") ?: System.getenv("CODEARTIFACT_AUTH_TOKEN")
+            }
+        }
+    }
 }
