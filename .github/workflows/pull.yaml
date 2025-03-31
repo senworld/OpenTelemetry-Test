@@ -22,11 +22,9 @@ jobs:
               run: echo $AWSLOGIN | docker login --username AWS --password-stdin 533267032079.dkr.ecr.ap-south-1.amazonaws.com
             - name: Run Docker Build and push
               run: |
-                for dir in */; do
-                  cd "$dir"
+                for dir in src/*/; do
                   dir=${dir%/}
                   echo "Building and pushing $dir"
-                  docker build -t 533267032079.dkr.ecr.ap-south-1.amazonaws.com/sen/opentelemetry/"$dir":${{ github.run_number }} .
-                  cd ..
+                  docker build -t 533267032079.dkr.ecr.ap-south-1.amazonaws.com/sen/opentelemetry/"${dir##*/}":${{ github.run_number }} "$dir"
                 done
-              working-directory: ./src
+              working-directory: .
