@@ -27,6 +27,7 @@ jobs:
                   dir=${dir%/}
                   echo "Building and pushing $dir"
                   docker build -t 533267032079.dkr.ecr.ap-south-1.amazonaws.com/sen/opentelemetry/"$dir":${{ github.run_number }} .
+                  docker push 533267032079.dkr.ecr.ap-south-1.amazonaws.com/sen/opentelemetry/"$dir":${{ github.run_number }}
                   cd ..
                 done
               working-directory: ./src
