@@ -15,6 +15,8 @@ jobs:
             - uses: actions/checkout@v3
             - name: Print Hello WOrld
               run: echo "Hello World"
+            - name: change permission for gradlew
+              run: chmod +x ./src/ad/gradlew              
             - name: Install dependencies gradle
               run: ./src/ad/gradlew dependencies
             - name: Run tests
