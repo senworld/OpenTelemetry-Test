@@ -13,7 +13,7 @@ jobs:
             - name: Print Hello WOrld
               run: echo "Hello World"
             - name: CD into the directory
-              run: cd src/ad
+              run: cd ./src/ad
             - name: Install dependencies gradle
               run: ./gradlew dependencies
             - name: Run tests
