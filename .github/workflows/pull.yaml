@@ -15,6 +15,14 @@ jobs:
         steps:
             - uses: actions/checkout@v4
             - name: Setup Docker Buildx
-              uses: docker/setup-buildx-action@v2
-            - name: Run Docker Build
-              run: docker
+              uses: docker/setup-buildx-action@v3
+            - name: initialize docker
+              env:
+                AWSLOGIN: ${{ secrets.AWSLOGIN }}
+              run: echo $AWSLOGIN | docker login --username AWS --password-stdin 533267032079.dkr.ecr.ap-south-1.amazonaws.com
+            - name: Run Docker Build and push
+              run: |
+                cd ./src
+                for dir in */; do
+                  echo "Building and pushing $dir"
+                done
