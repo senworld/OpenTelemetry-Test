@@ -17,6 +17,9 @@ jobs:
               with:
                 java-version: '21'
                 distribution: 'temurin'
+            - name: Setting execution permissions
+              run: chmod +x ./gradlew
+              working-directory: ./src/ad/
             - name: Set up Gradle Cache
               run: ./gradlew installDist
               working-directory: ./src/ad/
