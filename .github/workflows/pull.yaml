@@ -12,20 +12,12 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v3
-            - name: Print Hello WOrld
-              run: echo "Hello World"
-            - name: change permission for gradlew
-              run: chmod +x ./src/ad/gradlew              
-            - name: Install dependencies gradle
-              run: ./src/ad/gradlew dependencies
-            - name: Run tests
-              run: ./src/ad/gradlew test
-            - name: Build the project
-              run: ./gradlew build
-              working-directory: ./src/ad
-            - name: Run the application
-              run: ./gradlew bootRun
-              working-directory: ./src/ad
-            - name: Upload the build artifact
-              run: echo "Uploading the build artifact"
+            - uses: actions/checkout@v4
+            - uses: actions/setup-java@v4
+              with:
+                java-version: '21'
+                distribution: 'temurin'
+            - name: Set up Gradle Cache
+              run: ./gradlew installDist
+              working-directory: ./src/ad/
+              
