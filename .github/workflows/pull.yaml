@@ -23,4 +23,11 @@ jobs:
             - name: Set up Gradle Cache
               run: ./gradlew installDist
               working-directory: ./src/ad/
-              
+            - name: Upload to AWS CodeArtifact
+              env:
+                CODEARTIFACT_AUTH_TOKEN: ${{ secrets.uploadtoken }}
+              run: |
+                ./gradlew publish \
+                  -PawsCodeArtifactToken=$CODEARTIFACT_AUTH_TOKEN \
+                  -PawsCodeArtifactRepoUrl=https://testdomain-533267032079.d.codeartifact.ap-south-1.amazonaws.com/maven/ad-service/
+              working-directory: ./src/ad/
