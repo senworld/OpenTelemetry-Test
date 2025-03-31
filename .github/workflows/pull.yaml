@@ -4,22 +4,35 @@ on:
     pull_request:
         branches:
             - main
+    push:
+        branches:
+            - main
 
 jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v3
-            - name: Print Hello WOrld
-              run: echo "Hello World"
-            - name: CD into the directory
-              run: cd src/ad
-            - name: Install dependencies gradle
-              run: ./gradlew dependencies
-            - name: Run tests
-              run: ./gradlew test
-            - name: Build the project
-              run: ./gradlew build
-            - name: Run the application
-              run: ./gradlew bootRun
-              
+            - uses: actions/checkout@v4
+            - uses: actions/setup-java@v4
+              with:
+                java-version: '21'
+                distribution: 'temurin'
+            - name: Update Version in build.gradle
+              run: |
+                VERSION="0.1.0-$(date +%Y%m%d%H%M%S)"
+                echo "Updating version to $VERSION"
+                sed -i "s/version = \".*\"/version = \"$VERSION\"/" ./src/ad/build.gradle
+            - name: Setting execution permissions
+              run: chmod +x ./gradlew
+              working-directory: ./src/ad/
+            - name: Set up Gradle Cache
+              run: ./gradlew installDist
+              working-directory: ./src/ad/
+            - name: Upload to AWS CodeArtifact
+              env:
+                CODEARTIFACT_AUTH_TOKEN: ${{ secrets.uploadtoken }}
+              run: |
+                ./gradlew publish \
+                  -PawsCodeArtifactToken=$CODEARTIFACT_AUTH_TOKEN \
+                  -PawsCodeArtifactRepoUrl=https://testdomain-533267032079.d.codeartifact.ap-south-1.amazonaws.com/maven/ad-service/
+              working-directory: ./src/ad/
