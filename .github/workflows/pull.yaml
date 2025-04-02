@@ -19,7 +19,7 @@ jobs:
             - name: initialize docker
               env:
                 AWSLOGIN: ${{ secrets.AWSLOGIN }}
-              run: echo $AWSLOGIN | docker login --username AWS --password-stdin 533267032079.dkr.ecr.ap-south-1.amazonaws.com
+              run: docker login --username AWS --password $AWSLOGIN 533267032079.dkr.ecr.ap-south-1.amazonaws.com
             - name: Run Docker Build and push
               run: |
                 for dir in */; do
