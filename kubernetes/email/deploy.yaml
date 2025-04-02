@@ -31,7 +31,7 @@ spec:
       serviceAccountName: opentelemetry-demo
       containers:
         - name: emailservice
-          image: 'ghcr.io/open-telemetry/demo:1.12.0-emailservice'
+          image: '533267032079.dkr.ecr.ap-south-1.amazonaws.com/opentelemetry/email:60'
           imagePullPolicy: IfNotPresent
           ports:
             
