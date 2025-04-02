@@ -26,9 +26,8 @@ jobs:
                   cd "$dir"
                   dir=${dir%/}
                   echo "Building and pushing $dir"
-                  docker build -t 533267032079.dkr.ecr.ap-south-1.amazonaws.com/opentelemetry/"$dir":${{ github.run_number }} .
-                  docker push 533267032079.dkr.ecr.ap-south-1.amazonaws.com/opentelemetry/"$dir":${{ github.run_number }}
+                  docker build -t 533267032079.dkr.ecr.ap-south-1.amazonaws.com/opentelemetry/"$dir":${{ github.run_number }} .|| { echo "Docker build failed for $dir"; cd ..; continue; }
+                  docker push 533267032079.dkr.ecr.ap-south-1.amazonaws.com/opentelemetry/"$dir":${{ github.run_number }} || { echo "Docker push failed for $dir"; cd ..; continue; }
                   cd ..
                 done
               working-directory: ./src
-              continue-on-error: true
