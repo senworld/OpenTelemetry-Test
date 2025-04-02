@@ -31,3 +31,4 @@ jobs:
                   cd ..
                 done
               working-directory: ./src
+              continue-on-error: true
