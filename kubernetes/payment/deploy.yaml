@@ -31,7 +31,7 @@ spec:
       serviceAccountName: opentelemetry-demo
       containers:
         - name: paymentservice
-          image: '533267032079.dkr.ecr.ap-south-1.amazonaws.com/opentelemetry/payment:61'
+          image: '533267032079.dkr.ecr.ap-south-1.amazonaws.com/opentelemetry/payment:62'
           imagePullPolicy: IfNotPresent
           ports:
             

@@ -31,7 +31,7 @@ spec:
       serviceAccountName: opentelemetry-demo
       containers:
         - name: checkoutservice
-          image: '533267032079.dkr.ecr.ap-south-1.amazonaws.com/opentelemetry/checkout:61'
+          image: '533267032079.dkr.ecr.ap-south-1.amazonaws.com/opentelemetry/checkout:62'
           imagePullPolicy: IfNotPresent
           ports:
             

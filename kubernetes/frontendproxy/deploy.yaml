@@ -31,7 +31,7 @@ spec:
       serviceAccountName: opentelemetry-demo
       containers:
         - name: frontendproxy
-          image: '533267032079.dkr.ecr.ap-south-1.amazonaws.com/opentelemetry/frontendproxy:61'
+          image: '533267032079.dkr.ecr.ap-south-1.amazonaws.com/opentelemetry/frontendproxy:62'
           imagePullPolicy: IfNotPresent
           ports:
             

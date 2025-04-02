@@ -31,7 +31,7 @@ spec:
       serviceAccountName: opentelemetry-demo
       containers:
         - name: cartservice
-          image: '533267032079.dkr.ecr.ap-south-1.amazonaws.com/opentelemetry/cart:61'
+          image: '533267032079.dkr.ecr.ap-south-1.amazonaws.com/opentelemetry/cart:62'
           imagePullPolicy: IfNotPresent
           ports:
             

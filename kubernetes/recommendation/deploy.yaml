@@ -31,7 +31,7 @@ spec:
       serviceAccountName: opentelemetry-demo
       containers:
         - name: recommendationservice
-          image: '533267032079.dkr.ecr.ap-south-1.amazonaws.com/opentelemetry/recommendation:61'
+          image: '533267032079.dkr.ecr.ap-south-1.amazonaws.com/opentelemetry/recommendation:62'
           imagePullPolicy: IfNotPresent
           ports:
             

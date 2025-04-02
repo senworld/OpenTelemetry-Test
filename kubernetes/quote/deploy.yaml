@@ -31,7 +31,7 @@ spec:
       serviceAccountName: opentelemetry-demo
       containers:
         - name: quoteservice
-          image: '533267032079.dkr.ecr.ap-south-1.amazonaws.com/opentelemetry/quote:61'
+          image: '533267032079.dkr.ecr.ap-south-1.amazonaws.com/opentelemetry/quote:62'
           imagePullPolicy: IfNotPresent
           ports:
             
