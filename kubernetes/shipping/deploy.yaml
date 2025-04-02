@@ -28,7 +28,7 @@ spec:
       serviceAccountName: opentelemetry-demo
       containers:
         - name: shippingservice
-          image: '533267032079.dkr.ecr.ap-south-1.amazonaws.com/opentelemetry/shipping:60'
+          image: '533267032079.dkr.ecr.ap-south-1.amazonaws.com/opentelemetry/shipping:61'
           imagePullPolicy: IfNotPresent
           ports:
             

@@ -30,7 +30,7 @@ spec:
       serviceAccountName: opentelemetry-demo
       containers:
         - name: valkey
-          image: '533267032079.dkr.ecr.ap-south-1.amazonaws.com/opentelemetry/valkey:60'
+          image: '533267032079.dkr.ecr.ap-south-1.amazonaws.com/opentelemetry/valkey:61'
           imagePullPolicy: IfNotPresent
           ports:
             

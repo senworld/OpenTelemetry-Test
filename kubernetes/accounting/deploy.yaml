@@ -31,7 +31,7 @@ spec:
       serviceAccountName: opentelemetry-demo
       containers:
         - name: accountingservice
-          image: '533267032079.dkr.ecr.ap-south-1.amazonaws.com/opentelemetry/accounting:60'
+          image: '533267032079.dkr.ecr.ap-south-1.amazonaws.com/opentelemetry/accounting:61'
           imagePullPolicy: IfNotPresent
           env:
             - name: OTEL_SERVICE_NAME

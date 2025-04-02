@@ -31,7 +31,7 @@ spec:
       serviceAccountName: opentelemetry-demo
       containers:
         - name: frauddetectionservice
-          image: '533267032079.dkr.ecr.ap-south-1.amazonaws.com/opentelemetry/frauddetection:60'
+          image: '533267032079.dkr.ecr.ap-south-1.amazonaws.com/opentelemetry/frauddetection:61'
           imagePullPolicy: IfNotPresent
           env:
             - name: OTEL_SERVICE_NAME
