@@ -1,15 +1,15 @@
-name: Pull Request Workflow
+# name: Pull Request Workflow
 
-on:
-    pull_request:
-        branches:
-            - main
-    push:
-        branches:
-            - main
-            - DEV
+# on:
+#     pull_request:
+#         branches:
+#             - main
+#     push:
+#         branches:
+#             - main
+#             - DEV
 
-jobs:
+# jobs:
     # build:
     #     runs-on: ubuntu-latest
     #     steps:
@@ -33,29 +33,28 @@ jobs:
     #           working-directory: ./src
     #           continue-on-error: true
 
-    updatek8smanifest:
-        runs-on: ubuntu-latest
-        steps:
-          - name: Checkout
-            uses: actions/checkout@v4
-            with:
-              token: ${{ secrets.GITHUBTOKEN }}
-          - name: Update Kubernetes Manifests
-            run: |
-              for dir in */; do
-                cd "$dir"
-                dir=${dir%/}
-                echo "Updating Kubernetes manifests for $dir"
-                sed -i "s|image: '.*$dir.*'|image: '533267032079.dkr.ecr.ap-south-1.amazonaws.com/opentelemetry/"$dir":${{ github.run_number }}'|g" deploy.yaml || { echo "Failed to update Kubernetes manifests for $dir"; cd ..; continue; }
-                cd ..
-              done
-            working-directory: ./kubernetes
-          - name: commit and push to github
-            run: |
-              git config --global user.name "Sen"
-              git config --global user.email "sen@senworld.in"
-              git remote set-url origin 'https://${{ secrets.GITHUBTOKEN }}@github.com/senworld/OpenTelemetry-Test/'
-              git add .
-              git commit -m "Updated Kubernetes manifests with new image tags"
-              git push 
-            working-directory: ./kubernetes
+    # updatek8smanifest:
+    #     runs-on: ubuntu-latest
+    #     steps:
+    #       - name: Checkout
+    #         uses: actions/checkout@v4
+    #         with:
+    #           token: ${{ secrets.GITHUBTOKEN }}
+    #       - name: Update Kubernetes Manifests
+    #         run: |
+    #           for dir in */; do
+    #             cd "$dir"
+    #             dir=${dir%/}
+    #             echo "Updating Kubernetes manifests for $dir"
+    #             sed -i "s|image: '.*$dir.*'|image: '533267032079.dkr.ecr.ap-south-1.amazonaws.com/opentelemetry/"$dir":${{ github.run_number }}'|g" deploy.yaml || { echo "Failed to update Kubernetes manifests for $dir"; cd ..; continue; }
+    #             cd ..
+    #           done
+    #         working-directory: ./kubernetes
+    #       - name: commit and push to github
+    #         run: |
+    #           git config --global user.name "Sen"
+    #           git config --global user.email "sen@senworld.in"
+    #           git add .
+    #           git commit -m "Updated Kubernetes manifests with new image tags"
+    #           git push remote HEAD:main
+    #         working-directory: ./kubernetes
